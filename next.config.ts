@@ -5,7 +5,8 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import rehypeUnwrapImages from 'rehype-unwrap-images'; 
 
 const nextConfig: NextConfig = {
-  pageExtensions: ['js', 'tsx', 'mdx']
+  pageExtensions: ['js', 'tsx', 'mdx'],
+  output: 'export',
   
 };
 
