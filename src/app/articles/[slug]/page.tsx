@@ -6,20 +6,27 @@ import MdxLink from "@/components/markdown/MdxLink";
 import MdxList from "@/components/markdown/MdxList";
 import MdxTitle from "@/components/markdown/MdxTitle";
 import SectionHeader from "@/components/SectionHeader";
-import { ArticleMeta, getArticle, getArticleMdxContent } from "@/utilities/content-manager";
+import { ArticleMeta, getAllArticles, getArticle, getArticleMdxContent } from "@/utilities/content-manager";
 import { compileMDX } from "next-mdx-remote/rsc";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 interface ArticlePageProps {
-  params: Promise<{slug: string}>
+  params: Promise<{ slug: string }>
+}
+
+export async function generateStaticParams() {
+  return getAllArticles().map((article) => ({
+    slug: article.slug,
+  }))
 }
 
 export default async function ArticleSlug(props: ArticlePageProps) {
+
   const { slug } = await props.params;
   const frontmatter = getArticle(slug);
-  const { content} = await compileMDX<ArticleMeta>({
+  const { content } = await compileMDX<ArticleMeta>({
     options: {
       mdxOptions: {
         remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],

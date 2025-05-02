@@ -1,7 +1,13 @@
 import Image from "next/image";
 import MdxTitle from "@/components/markdown/MdxTitle";
 import SectionHeader from "@/components/SectionHeader";
-import { getArtwork } from "@/utilities/content-manager";
+import { getAllArticles, getArtwork } from "@/utilities/content-manager";
+
+export async function generateStaticParams() {
+  return getAllArticles().map((article) => ({
+    slug: article.slug,
+  }))
+}
 
 interface ArtworkPageProps {
   params: Promise<{ slug: string }>
