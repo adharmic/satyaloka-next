@@ -5,7 +5,7 @@ import { AiOutlineCopyright } from "react-icons/ai"
 export default function Footer() {
   return (
     <div className="flex flex-col gap-8 d-respira ">
-      <div className="w-full flex flex-row gap-8 items-center justify-between mt-8 border-1 border-[var(--damask)] rounded-lg">
+      <div className="w-full flex flex-row gap items-center justify-between mt-8 border-1 border-[var(--damask)] rounded-lg">
         <div className="h-full w-full flex flex-col gap-4 items-center border-r-1 border-[var(--damask)] p-2">
           <p className="font-bold">Contact</p>
           <p className="text-sm h-full flex items-center gap-2"><b className="underline text-[var(--red)]">adithya@satyaloka.org</b></p>

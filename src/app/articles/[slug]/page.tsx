@@ -10,6 +10,12 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import { IM_Fell_English } from "next/font/google";
+
+const im_fell = IM_Fell_English({
+  subsets: ["latin"],
+  weight: "400"
+})
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>
@@ -58,7 +64,7 @@ export default async function ArticleSlug(props: ArticlePageProps) {
       <div className="text-end p-4 bg-[var(--damask)] w-full rounded-b-xl self-end text-[var(--paper)] mb-8">
         {`Published on ${new Date(frontmatter?.date || 0).toLocaleDateString()}`}
       </div>
-      <div className="flex flex-col gap-8 text-lg im-fell">
+      <div className={"flex flex-col gap-8 text-lg " + im_fell.className}>
         {content}
       </div>
     </div>
