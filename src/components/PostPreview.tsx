@@ -18,7 +18,7 @@ export default function PostPreview(props: PostPreviewProps) {
         <Button alt={props.alt} link={props.link || ""} title="Read More" />
       </div>
       <div className="w-full border-1 border-[var(--damask)] h-64 rounded-lg">
-        <img className="w-full h-full object-cover rounded-lg" src={props.img} />
+        <img alt={props.description} className="w-full h-full object-cover rounded-lg" src={props.img} />
       </div>
     </div>
   )
