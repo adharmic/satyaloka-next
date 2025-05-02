@@ -12,9 +12,9 @@ import rehypeUnwrapImages from "rehype-unwrap-images";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
-export default async function ArticleSlug({ params }: { params: { slug: string } }) {
-  const { slug } = await params
-  const frontmatter = getArticle(slug);
+export default async function ArticleSlug(params: Promise<{ params: { slug: string } }>) {
+  const p  = await params
+  const frontmatter = getArticle(p.params.slug);
   const { content} = await compileMDX<ArticleMeta>({
     options: {
       mdxOptions: {
@@ -23,7 +23,7 @@ export default async function ArticleSlug({ params }: { params: { slug: string }
       },
       parseFrontmatter: true
     },
-    source: getArticleMdxContent(slug)?.content || "",
+    source: getArticleMdxContent(p.params.slug)?.content || "",
     components: {
       h1: MdxH1,
       img(props: object) { return <MdxImage {...props} /> },
@@ -43,7 +43,7 @@ export default async function ArticleSlug({ params }: { params: { slug: string }
         {frontmatter?.title}
       </MdxTitle>
       <div className="h-full w-full rounded-xl">
-        <Image width={2000} height={2000} alt={slug} className="h-full w-full object-contain border-2 border-[var(--damask)]" src={frontmatter?.img || ""} />
+        <Image width={2000} height={2000} alt={p.params.slug} className="h-full w-full object-contain border-2 border-[var(--damask)]" src={frontmatter?.img || ""} />
       </div>
       <div className="text-end p-4 bg-[var(--damask)] w-full rounded-b-xl self-end text-[var(--paper)] mb-8">
         {`Published on ${new Date(frontmatter?.date || 0).toLocaleDateString()}`}
