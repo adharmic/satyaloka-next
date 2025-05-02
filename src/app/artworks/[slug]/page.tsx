@@ -1,11 +1,11 @@
 import Image from "next/image";
 import MdxTitle from "@/components/markdown/MdxTitle";
 import SectionHeader from "@/components/SectionHeader";
-import { getAllArticles, getArtwork } from "@/utilities/content-manager";
+import { getAllArtworks, getArtwork } from "@/utilities/content-manager";
 
 export async function generateStaticParams() {
-  return getAllArticles().map((article) => ({
-    slug: article.slug,
+  return getAllArtworks().map((artwork) => ({
+    slug: artwork.slug,
   }))
 }
 
