@@ -4,13 +4,11 @@ import SectionHeader from "@/components/SectionHeader";
 import { getArtwork } from "@/utilities/content-manager";
 
 interface ArtworkPageProps {
-  params: {
-    slug: string
-  }
+  params: Promise<{ slug: string }>
 }
 
-export default async function ArtworkSlug({ params }: ArtworkPageProps) {
-  const slug = params.slug;
+export default async function ArtworkSlug(props: ArtworkPageProps) {
+  const { slug } = await props.params;
 
   const frontmatter = getArtwork(slug);
   return (

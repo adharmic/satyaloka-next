@@ -13,13 +13,11 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 interface ArticlePageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{slug: string}>
 }
 
-export default async function ArticleSlug({ params }: ArticlePageProps) {
-  const slug = params.slug;
+export default async function ArticleSlug(props: ArticlePageProps) {
+  const { slug } = await props.params;
   const frontmatter = getArticle(slug);
   const { content} = await compileMDX<ArticleMeta>({
     options: {
