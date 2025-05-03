@@ -5,7 +5,7 @@ interface SquareThumbProps {
   title: string,
   img: string,
   alt?: boolean,
-  link?: string
+  link: string
 }
 
 export default function SquareThumb(props: SquareThumbProps) {
