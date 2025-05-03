@@ -1,4 +1,4 @@
-import { SlLink, SlArrowRight } from "react-icons/sl"
+import { SlArrowRight } from "react-icons/sl"
 import Link from "next/link"
 
 interface SquareThumbProps {
