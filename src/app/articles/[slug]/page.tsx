@@ -10,9 +10,9 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
-import { IM_Fell_English } from "next/font/google";
+import { Bitter } from "next/font/google";
 
-const im_fell = IM_Fell_English({
+const im_fell = Bitter({
   subsets: ["latin"],
   weight: "400"
 })
